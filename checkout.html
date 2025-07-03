@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade - Optimo_Prompt.Ai</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+  <script>
+    // Initialize Paddle
+    document.addEventListener('DOMContentLoaded', () => {
+      Paddle.Setup({ 
+        vendor: YOUR_PADDLE_VENDOR_ID, // Replace with your ID
+        eventCallback: function(event) {
+          console.log('Paddle Event:', event);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Checkout page content -->
+  <!-- ... (copy from your previous checkout.html) ... -->
+
+  <script>
+    // Paddle checkout functions
+    function openCheckout(plan) {
+      const userId = getUserId();
+      Paddle.Checkout.open({
+        product: plan === 'premium' 
+          ? PREMIUM_PRODUCT_ID 
+          : UNLIMITED_PRODUCT_ID,
+        passthrough: JSON.stringify({ userId })
+      });
+    }
+
+    function getUserId() {
+      const storageKey = 'op_user_id';
+      let userId = localStorage.getItem(storageKey);
+      if (!userId) {
+        userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
+        localStorage.setItem(storageKey, userId);
+      }
+      return userId;
+    }
+  </script>
+</body>
+</html>

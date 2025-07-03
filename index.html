@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimo_Prompt.Ai - Supercharge Your AI Prompts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="description" content="Optimo_Prompt.Ai enhances your AI prompts for better results with ChatGPT, Midjourney, and other AI systems. Try it today!">
+  <meta name="keywords" content="AI prompt, prompt optimization, ChatGPT, Midjourney, AI tools">
+  <meta property="og:title" content="Optimo_Prompt.Ai - Supercharge Your AI Prompts">
+  <meta property="og:description" content="Transform simple prompts into AI masterpieces with our optimization tool">
+  <meta property="og:image" content="https://optimo-prompt.ai/images/og-image.jpg">
+  <meta property="og:url" content="https://optimo-prompt.ai">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">
+        <i class="fas fa-bolt"></i>
+        Optimo_Prompt.Ai
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/pages/checkout.html">Upgrade</a>
+      </div>
+      <a href="/pages/checkout.html" class="btn">Get Started</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1 class="animate">Transform Simple Prompts into AI Masterpieces</h1>
+      <p class="animate delay-1">Our AI-powered optimization tool enhances your prompts for better results with ChatGPT, Midjourney, and other AI systems</p>
+      <div class="cta-buttons animate delay-2">
+        <a href="/pages/checkout.html" class="btn">Start Optimizing</a>
+        <button id="activateOptimo" class="btn btn-outline">
+          <i class="fas fa-rocket"></i> Activate Now
+        </button>
+      </div>
+      <div class="bookmarklet animate delay-3">
+        <span>Or drag to Bookmarks Bar:</span>
+        <a href="javascript:(function(){const d=document,s=d.createElement('script');s.src='/js/loader.js?'+Date.now();d.body.appendChild(s);})();" class="bookmarklet-link">
+          <i class="fas fa-bookmark"></i> Optimo_Prompt.Ai
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rest of index.html content (features, demo, pricing, FAQ) -->
+  <!-- ... (copy from your previous index.html) ... -->
+  
+  <script src="/js/activation.js"></script>
+  <script>
+    // Initialize animations
+    document.querySelectorAll('.animate').forEach(el => {
+      el.style.opacity = '0';
+    });
+    
+    // Animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.feature-card, .pricing-card, .faq-item').forEach(card => {
+      observer.observe(card);
+    });
+    
+    // Demo optimization
+    document.getElementById('optimize-btn')?.addEventListener('click', function() {
+      const btn = this;
+      const input = document.getElementById('prompt-input');
+      const output = document.getElementById('result-box');
+      
+      if (!input || !output) return;
+      
+      const prompt = input.value.trim();
+      if (!prompt) {
+        alert('Please enter a prompt to optimize');
+        return;
+      }
+      
+      // Show loading state
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Optimizing...';
+      btn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Demo optimization logic
+        const optimized = `Develop a comprehensive marketing strategy for an eco-friendly reusable water bottle targeting environmentally-conscious young professionals (ages 25-40). Include:
+        
+1. Brand positioning emphasizing sustainability and style
+2. Digital marketing channels (social media, influencer partnerships)
+3. Eco-friendly packaging and distribution plan
+4. Launch timeline with key milestones
+5. Performance metrics for campaign success`;
+        
+        output.innerHTML = `<p>${optimized}</p>`;
+        
+        // Reset button
+        btn.innerHTML = '<i class="fas fa-magic"></i> Optimize Prompt';
+        btn.disabled = false;
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
